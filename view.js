@@ -1,5 +1,12 @@
 // ---- Define your dialogs  and panels here ----
+let x = define_new_effective_permissions("panel1", add_info_col = true, which_permissions = null);
+$('#sidepanel').append(x);
 
+let y = define_new_user_select_field("user1", "New User", on_user_change = function(selected_user){
+    $('#panel1').attr('username', selected_user);
+    $('#panel1').attr('filepath', '/C/presentation_documents/important_file.txt')
+});
+$('#sidepanel').append(y);
 
 
 // ---- Display file structure ----
