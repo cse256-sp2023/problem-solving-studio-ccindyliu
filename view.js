@@ -8,6 +8,24 @@ let y = define_new_user_select_field("user1", "New User", on_user_change = funct
 });
 $('#sidepanel').append(y);
 
+var single_dialog = define_new_dialog("newdialog", 'New Dialog', options = {});
+$('.perm_info').click(function(){
+    console.log('clicked!');
+    single_dialog.dialog('open');
+    console.log($('#panel1').attr('filepath'));
+    console.log($('#panel1').attr('username'));
+    console.log($(this).attr('permission_name'));
+
+    let fileobj = path_to_file[$('#panel1').attr('filepath')];
+    let userobj = all_users[$('#panel1').attr('username')];
+
+    let action = allow_user_action(fileobj, userobj, $(this).attr('permission_name'), explain_why = true);
+    let text = get_explanation_text(action);
+
+    $('#newdialog').empty();
+    $('#newdialog').append(text);
+});
+
 
 // ---- Display file structure ----
 
